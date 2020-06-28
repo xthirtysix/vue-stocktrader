@@ -11,14 +11,23 @@
         <label :for="stock.name">Quantity:</label>
         <b-form-input
           :id="stock.name"
-          v-model="quantity"
+          :state="state"
+          v-model.number="quantity"
           type="number"
           min="0"
           placeholder="Qty..."
         />
       </div>
       <div class="button-container">
-        <b-button class="card-button" href="#" variant="success">Buy</b-button>
+        <b-button
+          @click="buyStocks"
+          class="card-button"
+          href="#"
+          :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+          variant="success"
+        >
+          Buy
+        </b-button>
       </div>
     </b-card>
   </div>
@@ -33,6 +42,26 @@ export default {
     return {
       quantity: 0,
     };
+  },
+  computed: {
+    state() {
+      return this.quantity > 0 && Number.isInteger(this.quantity);
+    },
+  },
+  methods: {
+    buyStocks() {
+      const order = {
+        stockID: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: this.quantity,
+      };
+
+      if (order.quantity > 0) {
+        console.log(order);
+      }
+
+      console.log(Number.isInteger(order.quantity));
+    },
   },
 };
 </script>
