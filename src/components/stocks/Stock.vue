@@ -11,6 +11,7 @@
         <label :for="stock.name">Quantity:</label>
         <b-form-input
           :id="stock.name"
+          v-model="quantity"
           type="number"
           min="0"
           placeholder="Qty..."
@@ -27,6 +28,11 @@
 export default {
   props: {
     stock: Object,
+  },
+  data() {
+    return {
+      quantity: 0,
+    };
   },
 };
 </script>
