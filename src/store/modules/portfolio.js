@@ -1,24 +1,21 @@
-/* eslint-disable func-names */
-/* eslint quote-props: ["error", "as-needed", { "keywords": true, "unnecessary": false }] */
-
 const mutations = {
-  'BUY_STOCK': function (state, { stockId, quantity, stockPrice }) {
+  BUY_STOCK: (state, { stockID, quantity, stockPrice }) => {
     const record = state.stocks.find(
-      (element) => element.id === stockId,
+      (element) => element.id === stockID,
     );
 
     if (record) {
       record.quantity += quantity;
     } else {
       state.stocks.push({
-        id: stockId,
+        id: stockID,
         quantity,
       });
     }
 
     state.funds -= stockPrice * quantity;
   },
-  'SELL_STOCK': function (state, { stockId, quantity, stockPrice }) {
+  SELL_STOCK: (state, { stockId, quantity, stockPrice }) => {
     const record = state.stocks.find(
       (element) => element.id === stockId,
     );

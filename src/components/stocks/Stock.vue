@@ -56,11 +56,7 @@ export default {
         quantity: this.quantity,
       };
 
-      if (order.quantity > 0) {
-        console.log(order);
-      }
-
-      console.log(Number.isInteger(order.quantity));
+      this.$store.dispatch('buyStock', order);
     },
   },
 };
