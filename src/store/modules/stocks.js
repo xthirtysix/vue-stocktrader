@@ -1,10 +1,16 @@
+/* eslint-disable no-param-reassign */
 import stocks from '../../data/stocks';
 
 const mutations = {
   SET_STOCKS: (state, value) => {
     state.stocks = value;
   },
-  // 'RND_STOCKS': function (state) {},
+  RND_STOCKS: (state) => {
+    state.stocks.forEach((stock) => {
+      stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
+      console.log(stock.price);
+    });
+  },
 };
 
 const actions = {

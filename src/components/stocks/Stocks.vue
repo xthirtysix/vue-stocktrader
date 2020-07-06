@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>The Stocks component</h1>
     <ul class="grid">
       <li :key="stock.id" v-for="stock in stocks">
         <app-stock :stock="stock"/>
