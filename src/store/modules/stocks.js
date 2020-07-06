@@ -1,18 +1,16 @@
-/* eslint-disable func-names */
-/* eslint quote-props: ["error", "as-needed", { "keywords": true, "unnecessary": false }] */
 import stocks from '../../data/stocks';
 
 const mutations = {
-  'SET_STOCKS': function (state, value) {
+  SET_STOCKS: (state, value) => {
     state.stocks = value;
   },
   // 'RND_STOCKS': function (state) {},
 };
 
 const actions = {
-  // buyStock: ({ commit }, order) => {
-  //   commit();
-  // },
+  buyStock: ({ commit }, order) => {
+    commit('BUY_STOCK', order);
+  },
   initStocks: ({ commit }) => {
     commit('SET_STOCKS', stocks);
   },

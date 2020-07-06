@@ -18,11 +18,34 @@
             <b-dropdown-item href="#">Save Data</b-dropdown-item>
             <b-dropdown-item href="#">Load Data</b-dropdown-item>
           </b-nav-item-dropdown>
+          <li class="nav-item">
+            <span class="nav-link">
+              Funds: {{funds
+                .toString()
+                .split('')
+                .reduce((acc,val,idx,src) => {
+                  return (src.length - idx - 1) % 3 === 0 && idx !== src.length - 1
+                  ? [...acc, ...val, '\'']
+                  : [...acc, ...val];
+                }, [])
+                .join('')}}
+              </span>
+          </li>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .navbar {
